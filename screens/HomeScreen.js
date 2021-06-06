@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { Header, Icon } from "react-native-elements";
 import { RFValue } from "react-native-responsive-fontsize";
 import WebView from "react-native-webview";
-import axios from 'axios'
+import axios from 'axios';
 
 export default class HomeScreen extends Component {
     constructor(props) {
@@ -66,8 +66,9 @@ export default class HomeScreen extends Component {
                         centerComponent = {{text : 'Article Recommendation', style : {fontSize : RFValue(13), color : '#fff'} }}
                         rightComponent = {
                             <Icon
-                                name = 'search'
+                                name = 'file'
                                 type = 'font-awesome'
+                                onPress = {() => this.props.navigation.navigate("RecommendedArticles") }
                             />
                         }
                     />
@@ -77,21 +78,23 @@ export default class HomeScreen extends Component {
                         />
                     </View>
                     <Text style={{fontWeight : 'bold', fontSize : RFValue(20)}}>{title}</Text>
-                    <Text>{text}</Text>
-                    <TouchableOpacity
+                    <Text style={{fontSize : RFValue(10)}}>{text}</Text>
+                    <TouchableOpacity style={{margin : 20}}
                         onPress = {this.likedArticle}
                     >
                         <Icon
                             name = 'check'
                             type = 'font-awesome'
+                            color = 'green'
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity
+                    <TouchableOpacity style={{margin : 20}}
                         onPress = {this.notLikedArticle}
                     >
                         <Icon
                             name = 'times'
                             type = 'font-awesome'
+                            color = 'red'
                         />
                     </TouchableOpacity>
                 </View>
