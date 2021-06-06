@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-df = pd.read_csv('articles.csv')
+df = pd.read_csv('lang_filtered_article.csv')
 df = df[df['title'].notna()]
 
 count = CountVectorizer(stop_words = 'english')
@@ -22,4 +22,4 @@ def get_recommendation(movie_id):
   article_indices = [i [0] for i in sim_scores]
   return df[['url','title', 'text', 'lang', 'total_events']].iloc[article_indices].values.tolist()
 
-get_recommendation(-4029704725707465084)
+# get_recommendation(-4029704725707465084)
